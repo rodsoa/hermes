@@ -1,0 +1,14 @@
+function completeCampaign( id ) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var url = "/api/campaigns/"+id+"/complete";
+
+    $.post(url, function (response) {
+        console.log( response.msg );
+        location.reload();
+    });
+}
